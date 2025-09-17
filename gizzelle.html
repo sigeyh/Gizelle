@@ -1,410 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="robots" content="index, follow" />
-<meta name="description" content="Kwetu Store - Online marketplace to buy electronics, fashion, and home products. Inspired by Jumia style." />
-<meta name="keywords" content="Kwetu Store, online shop, ecommerce, electronics, fashion, jumia style" />
-<meta name="author" content="Kwetu Store" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>My Online Store | Shop Products Like Jumia</title>
+  <meta name="description" content="An online store inspired by Jumia. Shop electronics, fashion, groceries, and more at affordable prices.">
+  <meta name="keywords" content="online store, ecommerce, jumia style, shop kenya, buy products">
+  <meta name="author" content="My Store">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="My Online Store">
+  <meta property="og:description" content="Shop electronics, fashion, groceries and more like on Jumia.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://my-store.vercel.app/">
+  <meta property="og:image" content="images/product1.jpg">
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.kwetustore.com/" />
-<meta property="og:title" content="Kwetu Store — Online Marketplace" />
-<meta property="og:description" content="Shop electronics, fashion, and more online at Kwetu Store. Inspired by Jumia." />
-<meta property="og:image" content="https://picsum.photos/seed/store/600/400" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="My Online Store">
+  <meta name="twitter:description" content="Shop electronics, fashion, groceries and more like on Jumia.">
+  <meta name="twitter:image" content="images/product1.jpg">
 
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://www.kwetustore.com/" />
-<meta name="twitter:title" content="Kwetu Store — Online Marketplace" />
-<meta name="twitter:description" content="Shop electronics, fashion, and more online at Kwetu Store. Inspired by Jumia." />
-<meta name="twitter:image" content="https://picsum.photos/seed/store/600/400" />
-
-
-<title>Kwetu Store — Demo Marketplace</title>
-<link rel="icon" href="https://picsum.photos/seed/storeicon/64/64" type="image/png" />
-
-
-<!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-/* Small custom styles */
-.glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
-</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/product1.jpg">
 </head>
-<body class="bg-gray-100 text-gray-800">
-<header class="bg-white shadow-sm sticky top-0 z-40">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-16">
-<div class="flex items-center gap-4">
-<a href="#" class="flex items-center gap-2">
-<div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded flex items-center justify-center text-white font-bold">KS</div>
-<div class="hidden sm:block">
-<div class="font-semibold">Kwetu Store</div>
-<div class="text-xs text-gray-500">Online Marketplace demo</div>
-</div>
-</a>
-</div>
+<body class="bg-gray-50 text-gray-800">
 
+  <!-- Header -->
+  <header class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-orange-600">My Online Store</h1>
+    <nav class="space-x-4">
+      <a href="#" class="text-gray-700 hover:text-orange-600">Home</a>
+      <a href="#" class="text-gray-700 hover:text-orange-600">Shop</a>
+      <a href="#" class="text-gray-700 hover:text-orange-600">Cart</a>
+    </nav>
+  </header>
 
-<div class="flex-1 px-4">
-<div class="max-w-2xl mx-auto">
-<div class="relative">
-<input id="searchInput" type="search" placeholder="Search products, brands, models..." class="w-full pl-4 pr-10 py-2 rounded border border-gray-200 focus:outline-none" />
-<button id="searchBtn" class="absolute right-1 top-1/2 -translate-y-1/2 px-3 py-1 text-sm bg-indigo-600 text-white rounded">Search</button>
-</div>
-</div>
-</div>
+  <!-- Hero -->
+  <section class="bg-orange-500 text-white text-center py-10">
+    <h2 class="text-3xl font-bold">Welcome to My Store</h2>
+    <p class="mt-2">Shop affordable products like on Jumia.</p>
+  </section>
 
+  <!-- Filters -->
+  <section class="p-6 bg-white shadow-md flex flex-col md:flex-row justify-between items-center gap-4">
+    <!-- Search -->
+    <input type="text" id="search" placeholder="Search products..." class="border rounded px-4 py-2 w-full md:w-1/2" onkeyup="filterProducts()">
+    
+    <!-- Category Filter -->
+    <select id="categoryFilter" class="border rounded px-4 py-2 w-full md:w-1/4" onchange="filterProducts()">
+      <option value="all">All Categories</option>
+      <option value="electronics">Electronics</option>
+      <option value="fashion">Fashion</option>
+      <option value="accessories">Accessories</option>
+    </select>
+  </section>
 
-<div class="flex items-center gap-4">
-<div class="hidden sm:flex items-center gap-4">
-<select id="categorySelect" class="border rounded px-2 py-1">
-<option value="all">All Categories</option>
-</select>
-<select id="sortSelect" class="border rounded px-2 py-1">
-<option value="popular">Sort: Popular</option>
-<option value="price-asc">Price: Low → High</option>
-<option value="price-desc">Price: High → Low</option>
-</select>
-</div>
+  <!-- Products -->
+  <main id="productGrid" class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- Product 1 -->
+    <div class="product bg-white shadow rounded-lg p-4" data-category="electronics" data-name="smartphone x">
+      <img src="images/product1.jpg" alt="Product 1" class="rounded mb-2">
+      <h3 class="font-semibold">Smartphone X</h3>
+      <p class="text-orange-600 font-bold">KSh 12,999</p>
+      <button class="mt-2 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600" onclick="addToCart('Smartphone X', 12999)">Add to Cart</button>
+    </div>
 
+    <!-- Product 2 -->
+    <div class="product bg-white shadow rounded-lg p-4" data-category="accessories" data-name="wireless headphones">
+      <img src="images/product2.jpg" alt="Product 2" class="rounded mb-2">
+      <h3 class="font-semibold">Wireless Headphones</h3>
+      <p class="text-orange-600 font-bold">KSh 3,499</p>
+      <button class="mt-2 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600" onclick="addToCart('Wireless Headphones', 3499)">Add to Cart</button>
+    </div>
 
-<button id="cartBtn" class="relative">
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 7h14l-2-7M9 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
-</svg>
-<span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-</button>
-</header>
-
-  <main class="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-4 gap-6">
-    <!-- Sidebar -->
-    <aside class="lg:col-span-1">
-      <div class="bg-white p-4 rounded shadow-sm">
-        <h3 class="font-semibold mb-2">Filters</h3>
-        <div class="mb-4">
-          <label class="block text-sm mb-1">Price range (KSH)</label>
-          <div class="flex gap-2">
-            <input id="minPrice" type="number" placeholder="Min" class="w-1/2 border rounded px-2 py-1" />
-            <input id="maxPrice" type="number" placeholder="Max" class="w-1/2 border rounded px-2 py-1" />
-          </div>
-          <button id="applyPrice" class="mt-2 px-3 py-1 rounded bg-indigo-600 text-white text-sm">Apply</button>
-        </div>
-
-        <div>
-          <h4 class="font-medium mb-2">Brands</h4>
-          <div id="brandList" class="flex flex-col gap-2 text-sm"></div>
-        </div>
-      </div>
-
-      <div class="mt-4 bg-white p-4 rounded shadow-sm">
-        <h3 class="font-semibold mb-2">Quick Links</h3>
-        <ul class="text-sm text-gray-600 space-y-1">
-          <li><a href="#" class="hover:underline">Deals of the day</a></li>
-          <li><a href="#" class="hover:underline">Top sellers</a></li>
-          <li><a href="#" class="hover:underline">Delivery & Payment</a></li>
-        </ul>
-      </div>
-    </aside>
-
-    <!-- Product grid -->
-    <section id="productSection" class="lg:col-span-3">
-      <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4"></div>
-    </section>
+    <!-- Product 3 -->
+    <div class="product bg-white shadow rounded-lg p-4" data-category="fashion" data-name="smart watch">
+      <img src="images/product3.jpg" alt="Product 3" class="rounded mb-2">
+      <h3 class="font-semibold">Smart Watch</h3>
+      <p class="text-orange-600 font-bold">KSh 5,999</p>
+      <button class="mt-2 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600" onclick="addToCart('Smart Watch', 5999)">Add to Cart</button>
+    </div>
   </main>
 
-  <!-- Cart drawer (simple) -->
-  <div id="cartDrawer" class="fixed right-4 bottom-4 w-96 max-w-full transform translate-y-0 transition-all scale-100 hidden">
-    <div class="bg-white shadow-2xl rounded-lg overflow-hidden">
-      <div class="p-4 border-b flex items-center justify-between">
-        <h3 class="font-semibold">Your Cart</h3>
-        <button id="closeCart" class="text-gray-500">Close</button>
-      </div>
-      <div id="cartItems" class="p-4 space-y-3 max-h-60 overflow-auto"></div>
-      <div class="p-4 border-t">
-        <div class="flex justify-between items-center mb-3">
-          <div class="font-medium">Total</div>
-          <div id="cartTotal" class="font-semibold">KSH 0</div>
-        </div>
-        <button id="checkoutBtn" class="w-full py-2 rounded bg-green-600 text-white">Checkout</button>
-      </div>
-    </div>
-  </div>
+  <!-- Cart -->
+  <section class="p-6 bg-white shadow mt-6">
+    <h2 class="text-xl font-bold mb-2">Cart</h2>
+    <ul id="cart" class="space-y-2"></ul>
+    <p class="mt-4 font-semibold">Total: KSh <span id="total">0</span></p>
+  </section>
 
-  <!-- Product modal -->
-  <div id="productModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-3xl w-full overflow-hidden">
-      <div class="p-4 flex gap-4">
-        <img id="modalImage" src="" alt="" class="w-40 h-40 object-cover rounded">
-        <div class="flex-1">
-          <h3 id="modalTitle" class="font-semibold text-lg"></h3>
-          <div id="modalPrice" class="text-indigo-600 font-bold mt-2"></div>
-          <p id="modalDesc" class="text-sm text-gray-600 mt-2"></p>
-          <div class="mt-4 flex gap-2">
-            <input id="modalQty" type="number" min="1" value="1" class="w-20 border rounded px-2 py-1" />
-            <button id="addToCartModal" class="px-3 py-1 rounded bg-indigo-600 text-white">Add to Cart</button>
-            <button id="buyNowModal" class="px-3 py-1 rounded bg-yellow-500 text-white">Buy Now</button>
-          </div>
-        </div>
-        <div>
-          <button id="closeModal" class="text-gray-500">✕</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-4 mt-6">
+    <p>&copy; 2025 My Online Store. All rights reserved.</p>
+  </footer>
 
-  <!-- Checkout modal (simple form) -->
-  <div id="checkoutModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-xl w-full overflow-hidden">
-      <div class="p-4">
-        <h3 class="font-semibold">Checkout</h3>
-        <form id="checkoutForm" class="space-y-3 mt-3">
-          <input required name="name" placeholder="Full name" class="w-full border rounded px-2 py-2" />
-          <input required name="phone" placeholder="Phone (e.g. 07..)" class="w-full border rounded px-2 py-2" />
-          <input required name="address" placeholder="Delivery address" class="w-full border rounded px-2 py-2" />
-          <div class="flex gap-2">
-            <button type="submit" class="flex-1 py-2 rounded bg-indigo-600 text-white">Place order</button>
-            <button type="button" id="cancelCheckout" class="flex-1 py-2 rounded border">Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <footer class="mt-8 text-center text-sm text-gray-500 pb-8">Demo marketplace • Not for production • Customize branding & payment integrations</footer>
-
-  <script>
-    // Sample product data (in a real app you'd fetch this from a server)
-    const products = [
-      { id: 'p1', title: 'Smart TV 43" LED', price: 34999, category: 'Electronics', brand: 'Samsung', img: 'https://picsum.photos/seed/tv/400/300', desc: '43-inch Smart LED TV with HDMI and USB ports.' },
-      { id: 'p2', title: 'Wireless Earbuds', price: 2499, category: 'Electronics', brand: 'Base', img: 'https://picsum.photos/seed/earbuds/400/300', desc: 'Noise-cancelling wireless earbuds with charging case.' },
-      { id: 'p3', title: 'Running Shoes', price: 4999, category: 'Fashion', brand: 'Nike', img: 'https://picsum.photos/seed/shoes/400/300', desc: 'Comfortable running shoes for daily training.' },
-      { id: 'p4', title: 'Kitchen Mixer', price: 8999, category: 'Home', brand: 'Kenwood', img: 'https://picsum.photos/seed/mixer/400/300', desc: '500W kitchen mixer with multiple attachments.' },
-      { id: 'p5', title: 'Smartphone (64GB)', price: 21999, category: 'Electronics', brand: 'Infinix', img: 'https://picsum.photos/seed/phone/400/300', desc: 'Dual-sim smartphone with 64GB storage.' },
-      { id: 'p6', title: 'Office Chair', price: 7999, category: 'Home', brand: 'Ikea', img: 'https://picsum.photos/seed/chair/400/300', desc: 'Ergonomic office chair with lumbar support.' }
-    ];
-
-    // state
-    let state = {
-      products: products.slice(),
-      cart: JSON.parse(localStorage.getItem('kwetu_cart')||'{}')
-    };
-
-    // Helpers
-    const formatKsh = n => 'KSH ' + n.toLocaleString();
-
-    // DOM refs
-    const productsGrid = document.getElementById('productsGrid');
-    const categorySelect = document.getElementById('categorySelect');
-    const brandList = document.getElementById('brandList');
-    const cartCount = document.getElementById('cartCount');
-    const cartBtn = document.getElementById('cartBtn');
-    const cartDrawer = document.getElementById('cartDrawer');
-    const cartItems = document.getElementById('cartItems');
-    const cartTotal = document.getElementById('cartTotal');
-    const closeCart = document.getElementById('closeCart');
-    const cartBtnEl = document.getElementById('cartBtn');
-
-    // Modal refs
-    const productModal = document.getElementById('productModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalQty = document.getElementById('modalQty');
-    const addToCartModal = document.getElementById('addToCartModal');
-    const buyNowModal = document.getElementById('buyNowModal');
-    const closeModal = document.getElementById('closeModal');
-
-    // Checkout
-    const checkoutModal = document.getElementById('checkoutModal');
-    const checkoutForm = document.getElementById('checkoutForm');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    const cancelCheckout = document.getElementById('cancelCheckout');
-
-    // init
-    function init() {
-      populateFilters();
-      renderProducts(state.products);
-      updateCartUI();
-
-      document.getElementById('searchBtn').addEventListener('click', onSearch);
-      document.getElementById('searchInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter') onSearch(); });
-      document.getElementById('sortSelect').addEventListener('change', onSort);
-      categorySelect.addEventListener('change', applyFilters);
-      document.getElementById('applyPrice').addEventListener('click', applyFilters);
-
-      cartBtn.addEventListener('click', ()=>{ cartDrawer.classList.toggle('hidden'); });
-      closeCart.addEventListener('click', ()=> cartDrawer.classList.add('hidden'));
-
-      addToCartModal.addEventListener('click', ()=>{
-        const id = addToCartModal.dataset.id;
-        addToCart(id, +modalQty.value);
-        productModal.classList.add('hidden');
-      });
-
-      buyNowModal.addEventListener('click', ()=>{
-        const id = buyNowModal.dataset.id;
-        addToCart(id, +modalQty.value);
-        openCheckout();
-        productModal.classList.add('hidden');
-      });
-
-      closeModal.addEventListener('click', ()=> productModal.classList.add('hidden'));
-
-      checkoutBtn.addEventListener('click', ()=> openCheckout());
-      cancelCheckout.addEventListener('click', ()=> checkoutModal.classList.add('hidden'));
-
-      checkoutForm.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        // simulate order placement
-        localStorage.removeItem('kwetu_cart');
-        state.cart = {};
-        updateCartUI();
-        checkoutModal.classList.add('hidden');
-        alert('Order placed! We will contact you on the phone provided. (Demo)');
-      });
-    }
-
-    function populateFilters(){
-      const cats = Array.from(new Set(products.map(p=>p.category)));
-      cats.forEach(c=>{
-        const opt = document.createElement('option'); opt.value = c; opt.textContent = c; categorySelect.appendChild(opt);
-      });
-      const brands = Array.from(new Set(products.map(p=>p.brand)));
-      brands.forEach(b=>{
-        const div = document.createElement('label');
-        div.innerHTML = `<input type=checkbox class=brandChk value="${b}" checked /> <span class=ml-2>${b}</span>`;
-        brandList.appendChild(div);
-      });
-    }
-
-    function renderProducts(list){
-      productsGrid.innerHTML = '';
-      list.forEach(p=>{
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded shadow-sm overflow-hidden';
-        card.innerHTML = `
-          <img src="${p.img}" alt="${p.title}" class="w-full h-36 object-cover" />
-          <div class="p-3">
-            <h4 class="font-medium text-sm">${p.title}</h4>
-            <div class="text-indigo-600 font-semibold mt-1">${formatKsh(p.price)}</div>
-            <div class="text-xs text-gray-500 mt-2">${p.brand} • ${p.category}</div>
-            <div class="mt-3 flex gap-2">
-              <button data-id="${p.id}" class="viewBtn flex-1 py-1 rounded border">View</button>
-              <button data-id="${p.id}" class="addBtn flex-1 py-1 rounded bg-indigo-600 text-white">Add</button>
-            </div>
-          </div>
-        `;
-        productsGrid.appendChild(card);
-      });
-
-      // attach listeners
-      document.querySelectorAll('.addBtn').forEach(b=> b.addEventListener('click', (e)=> addToCart(e.target.dataset.id, 1)));
-      document.querySelectorAll('.viewBtn').forEach(b=> b.addEventListener('click', (e)=> openProductModal(e.target.dataset.id)));
-    }
-
-    function onSearch(){
-      const q = document.getElementById('searchInput').value.trim().toLowerCase();
-      const filtered = products.filter(p=> p.title.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
-      renderProducts(filtered);
-    }
-
-    function onSort(){
-      const v = document.getElementById('sortSelect').value;
-      let list = [...state.products];
-      if(v==='price-asc') list.sort((a,b)=> a.price - b.price);
-      else if(v==='price-desc') list.sort((a,b)=> b.price - a.price);
-      renderProducts(list);
-    }
-
-    function applyFilters(){
-      const cat = categorySelect.value;
-      const min = +(document.getElementById('minPrice').value||0);
-      const max = +(document.getElementById('maxPrice').value||Infinity);
-      const checkedBrands = Array.from(document.querySelectorAll('.brandChk:checked')).map(i=>i.value);
-
-      let list = products.filter(p=> (cat==='all'||p.category===cat) && p.price>=min && p.price<=max && checkedBrands.includes(p.brand));
-      renderProducts(list);
-    }
-
-    function openProductModal(id){
-      const p = products.find(x=>x.id===id);
-      if(!p) return;
-      modalImage.src = p.img;
-      modalTitle.textContent = p.title;
-      modalPrice.textContent = formatKsh(p.price);
-      modalDesc.textContent = p.desc;
-      addToCartModal.dataset.id = id;
-      buyNowModal.dataset.id = id;
-      modalQty.value = 1;
-      productModal.classList.remove('hidden');
-    }
-
-    function addToCart(id, qty){
-      state.cart[id] = (state.cart[id]||0) + qty;
-      localStorage.setItem('kwetu_cart', JSON.stringify(state.cart));
-      updateCartUI();
-    }
-
-    function updateCartUI(){
-      const keys = Object.keys(state.cart);
-      let total = 0; cartItems.innerHTML = '';
-      keys.forEach(id=>{
-        const p = products.find(x=>x.id===id);
-        const q = state.cart[id];
-        total += p.price * q;
-        const div = document.createElement('div');
-        div.className = 'flex items-center gap-3';
-        div.innerHTML = `
-          <img src="${p.img}" class="w-12 h-12 object-cover rounded" />
-          <div class="flex-1 text-sm">
-            <div class="font-medium">${p.title}</div>
-            <div class="text-xs text-gray-500">${formatKsh(p.price)} x ${q}</div>
-          </div>
-          <div class="flex flex-col items-end gap-1">
-            <div class="text-sm font-semibold">${formatKsh(p.price * q)}</div>
-            <div class="flex gap-1 mt-1">
-              <button data-id="${id}" class="dec text-xs px-2 py-0.5 border rounded">-</button>
-              <button data-id="${id}" class="inc text-xs px-2 py-0.5 border rounded">+</button>
-            </div>
-          </div>
-        `;
-        cartItems.appendChild(div);
-      });
-
-      document.querySelectorAll('.dec').forEach(b=> b.addEventListener('click', (e)=>{
-        const id = e.target.dataset.id;
-        state.cart[id] = Math.max(0, state.cart[id]-1);
-        if(state.cart[id]===0) delete state.cart[id];
-        localStorage.setItem('kwetu_cart', JSON.stringify(state.cart));
-        updateCartUI();
-      }));
-      document.querySelectorAll('.inc').forEach(b=> b.addEventListener('click', (e)=>{
-        const id = e.target.dataset.id;
-        state.cart[id] = (state.cart[id]||0)+1;
-        localStorage.setItem('kwetu_cart', JSON.stringify(state.cart));
-        updateCartUI();
-      }));
-
-      cartCount.textContent = keys.length;
-      cartTotal.textContent = formatKsh(total);
-      document.getElementById('cartTotal').textContent = formatKsh(total);
-    }
-
-    function openCheckout(){
-      if(Object.keys(state.cart).length===0){ alert('Your cart is empty'); return; }
-      checkoutModal.classList.remove('hidden');
-    }
-
-    // run
-    init();
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
+
