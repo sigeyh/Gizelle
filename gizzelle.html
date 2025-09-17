@@ -1,61 +1,87 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kwetu Store — Demo Marketplace</title>
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Small custom styles */
-    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="robots" content="index, follow" />
+<meta name="description" content="Kwetu Store - Online marketplace to buy electronics, fashion, and home products. Inspired by Jumia style." />
+<meta name="keywords" content="Kwetu Store, online shop, ecommerce, electronics, fashion, jumia style" />
+<meta name="author" content="Kwetu Store" />
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.kwetustore.com/" />
+<meta property="og:title" content="Kwetu Store — Online Marketplace" />
+<meta property="og:description" content="Shop electronics, fashion, and more online at Kwetu Store. Inspired by Jumia." />
+<meta property="og:image" content="https://picsum.photos/seed/store/600/400" />
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://www.kwetustore.com/" />
+<meta name="twitter:title" content="Kwetu Store — Online Marketplace" />
+<meta name="twitter:description" content="Shop electronics, fashion, and more online at Kwetu Store. Inspired by Jumia." />
+<meta name="twitter:image" content="https://picsum.photos/seed/store/600/400" />
+
+
+<title>Kwetu Store — Demo Marketplace</title>
+<link rel="icon" href="https://picsum.photos/seed/storeicon/64/64" type="image/png" />
+
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* Small custom styles */
+.glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
+</style>
 </head>
 <body class="bg-gray-100 text-gray-800">
-  <header class="bg-white shadow-sm sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-4">
-          <a href="#" class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded flex items-center justify-center text-white font-bold">KS</div>
-            <div class="hidden sm:block">
-              <div class="font-semibold">Kwetu Store</div>
-              <div class="text-xs text-gray-500">Online Marketplace demo</div>
-            </div>
-          </a>
-        </div>
+<header class="bg-white shadow-sm sticky top-0 z-40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-4">
+<a href="#" class="flex items-center gap-2">
+<div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded flex items-center justify-center text-white font-bold">KS</div>
+<div class="hidden sm:block">
+<div class="font-semibold">Kwetu Store</div>
+<div class="text-xs text-gray-500">Online Marketplace demo</div>
+</div>
+</a>
+</div>
 
-        <div class="flex-1 px-4">
-          <div class="max-w-2xl mx-auto">
-            <div class="relative">
-              <input id="searchInput" type="search" placeholder="Search products, brands, models..." class="w-full pl-4 pr-10 py-2 rounded border border-gray-200 focus:outline-none" />
-              <button id="searchBtn" class="absolute right-1 top-1/2 -translate-y-1/2 px-3 py-1 text-sm bg-indigo-600 text-white rounded">Search</button>
-            </div>
-          </div>
-        </div>
 
-        <div class="flex items-center gap-4">
-          <div class="hidden sm:flex items-center gap-4">
-            <select id="categorySelect" class="border rounded px-2 py-1">
-              <option value="all">All Categories</option>
-            </select>
-            <select id="sortSelect" class="border rounded px-2 py-1">
-              <option value="popular">Sort: Popular</option>
-              <option value="price-asc">Price: Low → High</option>
-              <option value="price-desc">Price: High → Low</option>
-            </select>
-          </div>
+<div class="flex-1 px-4">
+<div class="max-w-2xl mx-auto">
+<div class="relative">
+<input id="searchInput" type="search" placeholder="Search products, brands, models..." class="w-full pl-4 pr-10 py-2 rounded border border-gray-200 focus:outline-none" />
+<button id="searchBtn" class="absolute right-1 top-1/2 -translate-y-1/2 px-3 py-1 text-sm bg-indigo-600 text-white rounded">Search</button>
+</div>
+</div>
+</div>
 
-          <button id="cartBtn" class="relative">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 7h14l-2-7M9 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
-            </svg>
-            <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
+
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-4">
+<select id="categorySelect" class="border rounded px-2 py-1">
+<option value="all">All Categories</option>
+</select>
+<select id="sortSelect" class="border rounded px-2 py-1">
+<option value="popular">Sort: Popular</option>
+<option value="price-asc">Price: Low → High</option>
+<option value="price-desc">Price: High → Low</option>
+</select>
+</div>
+
+
+<button id="cartBtn" class="relative">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 7h14l-2-7M9 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+<span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+</button>
+</header>
 
   <main class="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-4 gap-6">
     <!-- Sidebar -->
